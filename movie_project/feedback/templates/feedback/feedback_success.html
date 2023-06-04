@@ -1,0 +1,64 @@
+<style>
+.container {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    
+}
+
+.feedback-success {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-wrapper {
+    text-align: center;
+    width: 900px;
+    height: 350px;
+}
+
+.feedback-icon {
+    font-size: 48px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+.feedback-title {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.feedback-message {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.feedback-actions {
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #32CD32;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 7px;
+}
+</style>
+
+<div class="container">
+  <div class="feedback-success">
+    <div class="feedback-wrapper">
+      <div class="feedback-header">
+        <i class="fas fa-check-circle feedback-icon"></i>
+        <h2 class="feedback-title">Geri Bildiriminiz Başarıyla Gönderildi!</h2>
+      </div>
+      <p class="feedback-message">Değerli geri bildiriminiz için teşekkür ederiz.</p>
+      <div class="feedback-actions">
+        <button onclick="window.location.href='/'" class="btn btn-primary">Ana Sayfaya Dön</button>
+      </div>
+    </div>
+  </div>
+</div>
