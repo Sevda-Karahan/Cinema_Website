@@ -80,7 +80,7 @@ k) Users who are logged in as a member can comment on films and the comments pre
 
 ![image](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/bf8ddae2-bbcb-4652-aeed-2ec6629b20da)
 
-4.2. Admin Panel
+Admin Panel
 
 l)	Authorised persons can log in to the admin panel. In this area, administrators can examine the saved data and perform various operations on it.
 
