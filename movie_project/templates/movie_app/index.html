@@ -1,0 +1,38 @@
+{% extends "movie_app/base.html" %}
+{% block title %}Yıldız Sinema{% endblock title %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="text-bg-dark p-3">
+    <h1 class="display-4">FİLMLER</h1>
+    </div>
+  </div>
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5">Vizyondakiler</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <!-- sol sütun içeriği burada yer alır -->
+    </div>
+    <div class="col-sm-9">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for film in film_list %}
+        <div class="col">
+          <div class="card h-100">
+            <img src={{film.image}} class="card-img-top" alt="...">  
+            <div class="card-body">
+              <h5 class="card-title">{{film.title}}</h5>
+              <a href="{% url 'film_detail' film.title %}" class="btn btn-primary">Bilet Al</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'movie_app/base.html' %}
+
+{% block title %}
+Biletlerim
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Biletlerim</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Film</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>Sinema</th>
+                <th>İşlemler</th>  <!-- Yeni sütun -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for bilet in biletler %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ bilet.seans.film.title }}</td>
+                <td>{{ bilet.seans.tarih }}</td>
+                <td>{{ bilet.seans.saat }}</td>
+                <td>{{ bilet.seans.salon.sinema.title }}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ bilet.id }}">Bilet İade</button>
+                </td>
+            </tr>
+            <!-- Bilet İade Modal -->
+            <div class="modal fade" id="exampleModal{{ bilet.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Bilet İade</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Emin misiniz? Bilet iadesi işlemi geri alınamaz.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                            <form method="POST" action="{% url 'bilet_iade' bilet.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">İade Et</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

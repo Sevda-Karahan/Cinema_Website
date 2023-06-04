@@ -1,0 +1,61 @@
+{% extends "movie_app/bilet.html" %}
+{% block content %}
+<div class="accordion-item">
+  <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne" style="font-size: 20px;">
+          Biletini seç
+      </button>
+  </h2>
+  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Koltuk yerlerini seçmen gerekiyor.<br>
+        <center>---------------------------------------------SAHNE--------------------------------------------------</center>
+        
+        <form method="POST" id="seat-selection-form" action="{% url 'seat_selection' tam_bilet_sayisi ogrenci_bilet_sayisi seans.seans_id son_tarih %}">
+          {% csrf_token %}
+          
+          <table Class="centered-table">
+            {% for row in seat_matrix %}
+              <tr>
+                {% for seat in row %}
+                  <td>
+                    {% if seat.is_selectable %}
+                     <input type="checkbox" class="seat-button" name="seat" value="{{ seat.satir }}-{{ seat.sutun }}">
+                    {% else %}
+                      <input type="checkbox" class="seat-button" disabled >
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        
+          <input type="hidden" name="ticket_count" value="{{ ticket_count }}">
+          <button type="submit" id="apply-button">Uygula</button>
+        </form>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              var checkboxes = document.querySelectorAll('.seat-button');
+              var ticketCount = {{ ticket_count }};
+              var selectedCount = 0;
+              var applyButton = document.getElementById('apply-button');
+      
+              checkboxes.forEach(function(checkbox) {
+                  checkbox.addEventListener('change', function() {
+                      selectedCount = document.querySelectorAll('.seat-button:checked').length;
+                      if (selectedCount === ticketCount) {
+                          applyButton.disabled = false;
+                      } else {
+                          applyButton.disabled = true;
+                      }
+                  });
+              });
+              // Başlangıçta "Uygula" butonunu devre dışı bırak
+               applyButton.disabled = true;
+          });
+      </script>
+      </div>
+  </div>
+</div>
+{% endblock content %}

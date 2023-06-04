@@ -1,0 +1,129 @@
+{% extends "movie_app/base.html" %}
+{% block content %}
+<style>
+    .img-small {
+      max-width: 90%;
+    }
+    .comment-card {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .comment-card .author {
+        font-weight: bold;
+      }
+      .comment-card .content {
+        margin-top: 5px;
+      }
+      .comment-card .timestamp {
+        margin-top: 10px;
+        color: #888;
+        font-size: 14px;
+      }
+      .no-comments {
+        margin-top: 20px;
+        color: #888;
+      }
+      .comment-form {
+        margin-top: 20px;
+      }
+</style>
+  <div class="wrapper">
+    <div class="container section single-movie">
+        <div class="row">
+            <div class="col-md-20">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src={{film.image}} alt="Hızlı ve &#214;fkeli 10"
+                             class="poster img-small">
+                    </div>
+                    <div class="col-sm-7">
+                        <h1 class="no-underline">{{film.title}}</h1>
+                        <p>
+                            <ul class="movie-info"> <li> Vizyon Tarihi:</i>{{film.vision_date}}</li> 
+                                <li> Yönetmen:</i>{{film.director}} </li> 
+                                <li> IMDB:</i>{{film.imdb_score}} </li> 
+                                <li> Oyuncular:</i>{{film.actors}}</li> 
+                                <li> Formatlar:</i>{{film.formats}}</li>
+
+                                {% for genre in genres %}
+                                <button type="button" class="btn btn-outline-secondary">{{genre.type}}</button>    
+                                {% endfor %}
+                            </ul>
+                        </p>
+                        <a href="{{film.trailer}}" class="btn btn-primary btn-lg">Fragman</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'comment_create' film_title=film.title %}" class="btn btn-secondary btn-lg" >Yorum Yap</a>
+                        {% endif %}
+                        <p></p>
+                        <html>
+                            <head>
+                                <title></title>
+                            </head>
+                            <body>
+                            <p>{{film.summary}}</p> 
+                            </body>
+                            </html>
+                    </div>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">Sinemalar</th>
+                          <th scope="col">Tarih</th>
+                          <th scope="col">Seanslar</th>
+                          <th scope="col">Seçenekler</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% for seans in seanslar %}
+                          {% if seans.tarih >= today or seans.saat >= current_time %}
+                              <tr>
+                                  <td>{{ seans.salon.sinema.title }}</td>
+                                  <td>{{ seans.tarih|date:"d F Y" }}</td>
+                                  <td>
+                                      <a href="{% url 'birinci_form' seans.seans_id%}" class="btn btn-primary">{{ seans.saat|time:"H:i" }}</a>
+                                  </td>
+                                  <td>
+                                  {% if seans.altyazi %}
+                                   TÜRKÇE ALTYAZI
+                                  {% endif %}
+                                  {% if seans.dublaj %}
+                                   TÜRKÇE DUBLAJ
+                                  {% endif %}
+                                   </td>
+                              </tr>
+                          {% endif %}
+                      {% endfor %}
+                      </tbody>
+                    </table>   
+                </div>
+                <!-- Display existing comments -->
+                <div class="comments-section">
+                    {% if film.comment_set.exists %}
+                    <h2>Yorumlar</h2>
+                    {% for comment in film.comment_set.all %}
+                        <div class="comment-card">
+                        <p class="author">{{ comment.author }}</p>
+                        <p class="content">{{ comment.content }}</p>
+                        <p class="timestamp">{{ comment.created_at }}</p>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="no-comments">Henüz yorum yok.</p>
+                    {% endif %}
+                </div>
+            
+                {% if user.is_authenticated %}
+                <!-- Comment Form -->
+                <div class="comment-form">
+                    <h2>Yorum Yap</h2>
+                    <form action="{% url 'comment_create' film_title=film.title %}" method="POST">
+                        {% csrf_token %}
+                        <textarea name="content" rows="5" class="form-control" required></textarea>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+{% endblock %}

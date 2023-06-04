@@ -1,0 +1,28 @@
+{% extends "movie_app/bilet.html" %}
+{% block content %}
+<div class="accordion-item">
+    <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne" style="font-size: 20px;">
+            Biletini seç
+        </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          Film ve seansı seçtin, şimdi bilet tipini seçmen gerekiyor.Unutma, öğrenci bilet tipi seçtiğinde bu bileti kullanabilmek için sinema girişinde öğrenci kimliğini ibraz etmen gerekecektir.<br>
+          <form method="POST" action="{% url 'birinci_form' seans.seans_id %}">
+            {% csrf_token %}
+            <div class="wrapper">
+              <label for="{{ form.tam_bilet_sayisi.id_for_label }}" class="title">{% if seans.salon.sinema.gold_class %}Gold Class Tam Bilet   |   100TL{% endif %}</label>
+              {{ form.tam_bilet_sayisi }}
+            </div>
+            <div class="wrapper">
+              <label for="{{ form.ogrenci_bilet_sayisi.id_for_label }}" class="title">{% if seans.salon.sinema.gold_class %}Gold Class Öğrenci Bileti   |   75TL{% endif %}</label>
+              {{ form.ogrenci_bilet_sayisi }}
+            </div>
+            <button type="submit" class="btn btn-outline-dark right-align">Devam Et</button>
+          </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

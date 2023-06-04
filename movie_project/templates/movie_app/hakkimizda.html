@@ -1,0 +1,88 @@
+{% extends "movie_app/base.html" %}
+{% block title %}Hakkımızda{% endblock title %}
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("https://images.pexels.com/photos/7991158/pexels-photo-7991158.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      
+      .faq {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+      
+      .faq h2 {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+      
+      .faq .question {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+      
+      .faq .answer {
+        font-size: 20px;
+        margin-bottom: 20px;
+        display: block;
+        margin-top: 0px;
+      }
+      
+      .faq .answer span {
+        font-weight: normal;
+      }
+  </style>
+</head>
+<body>
+  <div class="faq">
+    <h2>HAKKIMIZDA</h2>
+
+    <div class="question">
+      <span class="question">Biz kimiz:</span>
+      <span class="answer"><span>Biz, Cinema sinema sitesi ekibi olarak sinemaya tutkulu bir grupuz. Profesyonel kadromuz ve sektördeki deneyimimizle, kaliteli film gösterimleri ve etkileyici sinema deneyimleri sunmak için çalışıyoruz.</span><span>
+    </div>
+
+    <div class="question">
+      <span class="question">Amacımız:</span>
+      <span class="answer"><span>Cinema şirketi olarak amacımız, sinema tutkunlarına en iyi film deneyimini sunmak ve onların sinema keyfini artırmaktır. Sinema sektöründe öncü bir rol oynayarak yenilikçi teknolojiler ve hizmetler sunmayı hedefliyoruz. Misyonumuz, izleyicilere unutulmaz anlar yaşatacak, çeşitli film seçenekleri ve konforlu sinema ortamları sunarak sinema kültürünü geliştirmektir. Bu doğrultuda, kaliteli film gösterimleri ve etkileyici sinema deneyimleriyle sektörde öncü olmayı amaçlıyoruz.</span><span>
+    </div>
+    
+    <div class="question">
+      <span class="question">Ekibimiz:</span>
+      <span class="answer"><span>Beyza Fındık, Elif İnce, Sina Alış, Sevda Karahan, Zeynep Özkayıkcı</span><span>
+    </div>
+
+    <div class="question">
+        <span class="question">Servislerimiz:</span>
+        <span class="answer"><span>Cinema şirketi olarak çeşitli hizmetler sunuyoruz. Bunlar arasında geniş film seçenekleri, yüksek kaliteli görüntü ve ses sistemleri, rahat ve modern sinema salonları, online bilet satışı, özel etkinlikler ve gösterimler gibi birçok hizmet yer almaktadır. Müşterilerimize en iyi sinema deneyimini sunmak için sürekli olarak servislerimizi geliştirmeye ve yenilikçi çözümler sunmaya özen gösteriyoruz.</span><span>
+    </div>
+
+    <div class="question">
+        <span class="question">İletişim:</span>
+        <span class="answer"><span>info@cinema-entertainment.com</span><span>
+    </div>
+
+
+    <!-- Add more questions and answers as needed -->
+
+  </div>
+</body>
+</html>
+
+
+{% endblock content %}

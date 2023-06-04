@@ -1,0 +1,28 @@
+{% extends "movie_app/base.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="text-bg-dark p-3">
+      <h1 class="display-4">SİNEMALARIMIZ</h1>
+      </div>
+    </div>
+  </div>
+  {% for sinema in sinemalar %}
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title">{{sinema.title}}</h5>
+      <p class="card-text">{{sinema.address}}</p>
+      {% if sinema.gold_class %}
+      <button type="button" class="btn btn-outline-warning">Gold Class</button>
+      {% endif %}
+    </div>
+    <div class="card-footer text-body-secondary">
+      &nbsp;
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+
+{% endblock content %}

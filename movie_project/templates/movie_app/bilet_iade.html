@@ -1,0 +1,24 @@
+{% extends 'movie_app/base.html' %}
+
+{% block title %}
+Bilet İade
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Bilet İade</h1>
+
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        {{ error_message }}
+    </div>
+    {% endif %}
+
+    <p>Emin misiniz? Bilet iadesi işlemi geri alınamaz.</p>
+
+    <form method="POST" action="{% url 'bilet_iade' bilet.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">İade Et</button>
+    </form>
+</div>
+{% endblock content %}
