@@ -53,7 +53,7 @@ Here, the desired seats can be selected from the available seats in the hall as 
 
 After this stage, the user is directed to the payment page. Within the 5-minute time limit, after the correct information is entered, the user's ticket/tickets are created and the ticket information is sent to the user's e-mail address.
 
-![image](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/93560514-8702-470d-b2c6-4aaed7b200cb)
+![2](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/32471488-2bb5-4dd9-a73e-e8bf90d3bc2f)
 
 ![image](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/bb7a41ae-4338-43fe-a36c-8b8d76416ef3)
 
