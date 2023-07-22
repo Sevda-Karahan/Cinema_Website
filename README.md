@@ -94,6 +94,6 @@ l)	Authorised persons can log in to the admin panel. In this area, administrator
 
 m) Authorised persons can be added to the admin section from the admin panel with the specified authorities.
 
-![image](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/6b836bd9-6c93-4023-9944-f4aacaddf392)
+![2](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/89d956d4-c118-49bc-8c6b-8dc4ffc9e53e)
 
 ![image](https://github.com/Sevda-Karahan/Cinema_Website/assets/116480291/1c87cafa-2022-4ae1-bdbd-a29312de34cc)
