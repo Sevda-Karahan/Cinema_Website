@@ -1,4 +1,4 @@
-# Cinema_Website
+# Cinema Website
 Coded using Python/Django.
 
 The images below are some images from the website.
